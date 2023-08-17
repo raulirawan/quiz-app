@@ -1,6 +1,6 @@
 @extends('layouts.dashboard-admin')
 
-@section('title', 'Halaman Tambah jabatan')
+@section('title', 'Halaman Tambah quiz')
 
 @section('content')
     <div class="content-wrapper">
@@ -9,12 +9,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Tambah jabatan</h1>
+                        <h1>Tambah quiz</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Tambah jabatan</li>
+                            <li class="breadcrumb-item active">Tambah quiz</li>
                         </ol>
                     </div>
                 </div>
@@ -39,22 +39,38 @@
                         @endif
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Form Tambah jabatan</h3>
+                                <h3 class="card-title">Form Tambah quiz</h3>
                             </div>
                             <!-- /.card-header -->
-                            <form class="form-horizontal" action="{{ route('jabatan.update', $item->id) }}" method="POST"
+                            <form class="form-horizontal" action="{{ route('quiz.store') }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
-                                @method('PUT')
                                 <div class="card-body">
                                     <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Jabatan</label>
+                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Quiz</label>
                                         <div class="col-sm-10">
                                             <input type="text" name="name"
                                                 class="form-control @error('name') is-invalid @enderror" id="inputEmail3"
-                                                placeholder="Nama Jabatan" value="{{ $item->name }}">
+                                                placeholder="Nama Quiz" value="{{ old('name') }}">
                                             <div class="invalid-feedback">
-                                                Masukan Nama Jabatan
+                                                Masukan Nama Quiz
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Materi</label>
+                                        <div class="col-sm-10">
+                                            <select name="materi_id" id="materi_id"
+                                                class="form-control @error('materi_id') is-invalid @enderror">
+                                                <option value="">-- Pilih Materi --</option>
+                                                @foreach ($materi as $item)
+                                                    <option value="{{ $item->id }}"
+                                                        @if (old('materi_id') == $item->id) selected="selected" @endif>
+                                                        {{ $item->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Pilih Materi
                                             </div>
                                         </div>
                                     </div>
@@ -78,3 +94,9 @@
         <!-- /.content -->
     </div>
 @endsection
+@push('down-script')
+    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('content');
+    </script>
+@endpush

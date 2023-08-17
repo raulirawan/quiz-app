@@ -57,7 +57,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link {{ request()->is('admin/quiz*') ? 'active' : '' }}">
+                    <a href="{{ route('quiz.index') }}" class="nav-link {{ request()->is('admin/quiz*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             Quiz
@@ -75,7 +75,7 @@
                     </a>
                 </li> --}}
 
-                {{-- <li class="nav-item">
+                <li class="nav-item">
                     <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
@@ -86,7 +86,7 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
-                </li> --}}
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

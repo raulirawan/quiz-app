@@ -35,7 +35,7 @@
                         <!-- small box -->
                         <div class="small-box bg-success">
                             <div class="inner">
-                                <h3>{{ $berkasSukses ?? '' }}</h3>
+                                <h3>{{ App\User::where('roles','USER')->count() ?? '' }}</h3>
 
                                 <p>Total User</p>
                             </div>
@@ -49,7 +49,7 @@
                         <!-- small box -->
                         <div class="small-box bg-warning">
                             <div class="inner">
-                                <h3>{{ $berkasPending ?? '' }}</h3>
+                                <h3>{{ App\Materi::count() ?? '' }}</h3>
 
                                 <p>Total Materi</p>
                             </div>
@@ -63,7 +63,7 @@
                         <!-- small box -->
                         <div class="small-box bg-danger">
                             <div class="inner">
-                                <h3>{{ $berkasTolak ?? '' }}</h3>
+                                <h3>{{ App\Quiz::count() ?? '' }}</h3>
 
                                 <p>Total Quiz</p>
                             </div>
