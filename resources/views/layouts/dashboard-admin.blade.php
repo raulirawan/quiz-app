@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>@yield('title')</title>
-    @laravelPWA
+    <!-- PWA  -->
     <meta name="theme-color" content="#6777ef" />
-    <link rel="apple-touch-icon" href="{{ asset('img/jasamarga.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/icons/icon-192x192-new.png') }}">
     <link rel="manifest" href="{{ asset('/manifest.json') }}">
     @stack('up-style')
     @include('includes.style')
@@ -44,7 +44,14 @@
     @stack('up-script')
     @include('includes.script')
     @stack('down-script')
-
+    <script src="{{ asset('/sw.js') }}"></script>
+    <script>
+        if (!navigator.serviceWorker.controller) {
+            navigator.serviceWorker.register("/sw.js").then(function(reg) {
+                console.log("Service worker has been registered for scope: " + reg.scope);
+            });
+        }
+    </script>
 </body>
 
 </html>

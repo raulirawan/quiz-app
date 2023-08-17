@@ -1,0 +1,17 @@
+{
+    "name": "Gabi Ceria",
+    "short_name": "LPT",
+    "start_url": "/",
+    "background_color": "#6777ef",
+    "description": "Game Gabi Ceria",
+    "display": "fullscreen",
+    "theme_color": "#6777ef",
+    "icons": [
+        {
+            "src": "images/icons/icon-512x512-new.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}
