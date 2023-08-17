@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@yield('title')</title>
+    @laravelPWA
     <!-- FontAwesome-cdn include -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <!-- Google fonts include -->
@@ -18,12 +19,43 @@
     <!-- Main-StyleSheet include -->
     <link rel="stylesheet" href="{{ asset('/') }}frontend/assets/css/style.css" />
     <style>
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .login-card {
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-card-header {
+            background-color: #007bff;
+            color: white;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .login-card-body {
+            padding: 20px;
+        }
+
+        .eye-icon {
+            cursor: pointer;
+        }
+
         .card-list-container {
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
         }
+
         article {
             text-align: left;
         }
@@ -106,13 +138,7 @@
         </a>
     </nav>
     <!-- jQuery-js include -->
-    <script src="{{ asset('/') }}frontend/assets/js/jquery-3.6.0.min.js"></script>
-    <!-- Bootstrap-js include -->
-    <script src="{{ asset('/') }}frontend/assets/js/bootstrap.min.js"></script>
-    <!-- jQuery-validate-js include -->
-    <script src="{{ asset('/') }}frontend/assets/js/jquery.validate.min.js"></script>
-    <!-- Custom-js include -->
-    <script src="{{ asset('/') }}frontend/assets/js/script.js"></script>
+    @stack('scripts')
 </body>
 
 </html>
